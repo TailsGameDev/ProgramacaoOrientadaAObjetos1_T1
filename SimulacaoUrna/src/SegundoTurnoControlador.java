@@ -22,10 +22,13 @@ public class SegundoTurnoControlador {
 	
 	public void gerarMapaVotosGovernador(VotacaoEntidade ve) { //serao computados todos os votos para a votacao passada como parametro
 		
+		//cria array com todos os votos
 		ArrayList<VotoEntidade> av = ve.getVotosDeTodasAsUrnas(); //av eh sigla para array de votos
 		
+		//cria mapa para ser configurado mais abaixo no metodo
 		HashMap<CandidatoEntidade, Integer> mapaVotosGovernador = new HashMap<CandidatoEntidade, Integer>();//<candidato, numero de votos nele>
 		
+		//percorre os votos
 		for(VotoEntidade voto : av) {
 			if(mapaVotosGovernador.containsKey( voto.getCandidatoGovernador() )) {
 				int qtddVotosAtuais = mapaVotosGovernador.get(voto.getCandidatoGovernador());

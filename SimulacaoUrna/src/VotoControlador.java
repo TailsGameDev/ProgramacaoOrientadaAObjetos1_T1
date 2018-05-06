@@ -2,7 +2,9 @@ import java.util.ArrayList;
 
 public class VotoControlador {
 	
-	public VotoEntidade instanciarVoto(int numGov, int numDep, UrnaEntidade urna) {
+	//o metodo cria um voto, e poe ele na urna. Se o numero for 0 ele nao atribui candidato, se for um numero sem candidato, eh cadastrado 99
+	//e nao eh atribuido candidato
+	public void instanciarVoto(int numGov, int numDep, UrnaEntidade urna) {
 
 		//passa a chave para ter certeza de que estah sendo usado esse metodo para instanciacao
 		VotoEntidade voto = new VotoEntidade("lasdfas982h3n4uf9dsajfpja98r3npdfe9jd832dnum9");
@@ -15,6 +17,7 @@ public class VotoControlador {
 		ArrayList<CandidatoEntidade> candidatosGovernador = urna.getCandidatosGovernador();
 		ArrayList<CandidatoEntidade> candidatosDeputado = urna.getCandidatosDeputado();
 //System.out.println(candidatosDeputado.get(1).getNome());
+		
 		//percorre os candidatos a governador, atribuindo o candidato de acordo com o numero ou 99 se nao encontrar algum correspondente
 		if(numGov != 0) { //se numGov for 0, nada deve ser feito
 			for (CandidatoEntidade candidatoGov : candidatosGovernador) {
@@ -38,8 +41,13 @@ public class VotoControlador {
 				voto.setNumeroDeputado(99);
 			}
 		}
-
-		return voto;
+		
+		ArrayList<VotoEntidade> av = new ArrayList<VotoEntidade>(); // av eh Array de Votos;
+		av=urna.getListaDeVotos();
+		av.add(voto);
+		urna.setListaDeVotos(av);
+		
+		//return voto;
 	}
 	
 }

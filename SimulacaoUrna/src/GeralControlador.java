@@ -36,6 +36,17 @@ public class GeralControlador {
 		segundoTurnoControlador.adicionarZonaaaVotacao(zonaFlorianopolis, votacaoFlorianopolis);
 		//System.out.println(votacaoFlorianopolis.getZonasEleitorais().get(0)); ok
 		
+		votoControlador.instanciarVoto(1, 1, urnaNaUFSC);
+		votoControlador.instanciarVoto(2, 2, urnaNaUFSC);
+		votoControlador.instanciarVoto(2, 2, urnaNaUFSC);
+		votoControlador.instanciarVoto(0, 0, urnaNaUFSC);
+		votoControlador.instanciarVoto(42, 42, urnaNaUFSC);
+//		System.out.println(urnaNaUFSC.getListaDeVotos()); ok
+		segundoTurnoControlador.listarVotosDeTodasAsUrnas(votacaoFlorianopolis);
+//		System.out.println(urnaNaUFSC.getListaDeVotos().get(4).getNumeroGovernador()); ok
+//		System.out.println(votacaoFlorianopolis.getMapaVotosGovernador()); ok
+		segundoTurnoControlador.gerarMapaVotosGovernador(votacaoFlorianopolis);
+//		System.out.println(segundoTurnoControlador.definirGovernadorVencedor(votacaoFlorianopolis).getNome()); ok
 		
 	}
 
