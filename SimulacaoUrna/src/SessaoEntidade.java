@@ -6,6 +6,7 @@ public class SessaoEntidade {
 	
 	public SessaoEntidade(String s, UrnaEntidade u) {
 		sessao=s; urna =u;
+		u.setSessao(this);
 	}
 	
 	public String getSessao() {

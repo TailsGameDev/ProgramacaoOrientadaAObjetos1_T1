@@ -31,8 +31,8 @@ public class SegundoTurnoControlador {
 		//percorre os votos
 		for(VotoEntidade voto : av) {
 			if(mapaVotosGovernador.containsKey( voto.getCandidatoGovernador() )) {
-				int qtddVotosAtuais = mapaVotosGovernador.get(voto.getCandidatoGovernador());
-				mapaVotosGovernador.put(voto.getCandidatoGovernador(), qtddVotosAtuais + 1);
+				int qtddVotosAtual = mapaVotosGovernador.get(voto.getCandidatoGovernador());
+				mapaVotosGovernador.put(voto.getCandidatoGovernador(), qtddVotosAtual + 1);
 			} else {
 				mapaVotosGovernador.put(voto.getCandidatoGovernador(), 1);
 			}
@@ -59,4 +59,38 @@ public class SegundoTurnoControlador {
 		v.setZonasEleitorais(zonasEleitorais);
 	}
 	
+	public int contarVotosBrancosGovernador(VotacaoEntidade ve) {
+		
+		ArrayList<VotoEntidade> av = ve.getVotosDeTodasAsUrnas();
+		int brancos = 0;
+		for (VotoEntidade voto : av) {
+			if(voto.getNumeroGovernador()==99)
+				brancos++;
+		}
+		return brancos;
+	}
+	
+	public int contarVotosNulosGovernador(VotacaoEntidade ve) {
+		
+		ArrayList<VotoEntidade> av = ve.getVotosDeTodasAsUrnas();
+		int brancos = 0;
+		for (VotoEntidade voto : av) {
+			if(voto.getNumeroGovernador()==99)
+				brancos++;
+		}
+		return brancos;
+	}
+	
+	public int calculaQtddVotosValidosGovernador(VotacaoEntidade ve) {
+		
+		ArrayList<VotoEntidade> av = ve.getVotosDeTodasAsUrnas();
+		int votosValidos = 0;
+		for(VotoEntidade voto : av) {
+			if(voto.getNumeroGovernador() !=0 && voto.getNumeroGovernador() != 99) {
+				votosValidos++;
+			}
+		}
+		return votosValidos;
+	}
+
 }

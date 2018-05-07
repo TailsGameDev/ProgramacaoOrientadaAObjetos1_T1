@@ -23,15 +23,19 @@ public class GeralControlador {
 		SessaoEntidade sessaoFloripaUFSC = new SessaoEntidade("sessao UFSC", urnaNaUFSC);
 		ZonaEleitoralEntidade zonaFlorianopolis = new ZonaEleitoralEntidade("Zona Florianopolis");
 		zonaEleitoralControlador.adicionarSessaoaaZona(sessaoFloripaUFSC, zonaFlorianopolis);
+		urnaNaUFSC.setZonaEleitoral(zonaFlorianopolis);
 		
 		UrnaEntidade urnaSessaoSJ = new UrnaEntidade(5, "primeiro", candidatosGovernador, candidatosDeputado);
 		SessaoEntidade sessaoZonaSJ = new SessaoEntidade("sessao em Sao Jose", urnaSessaoSJ);
 		ZonaEleitoralEntidade zonaSaoJose = new ZonaEleitoralEntidade("Zona Sao Jose");
-		zonaEleitoralControlador.adicionarSessaoaaZona(sessaoZonaSJ, zonaSaoJose); 
+		zonaEleitoralControlador.adicionarSessaoaaZona(sessaoZonaSJ, zonaSaoJose);
+		urnaSessaoSJ.setZonaEleitoral(zonaSaoJose);
 		
 		//VotoEntidade voto = votoControlador.instanciarVoto(2,3,urnaNaUFSC); ok
 		//System.out.println(voto.getCandidatoGovernador().getNome() + voto.getCandidatoDeputado().getNome()); ok
 		
+		
+		//TESTANDO VOTACAO SEGUNDO TURNO
 		VotacaoEntidade votacaoFlorianopolis = new VotacaoEntidade();
 		segundoTurnoControlador.adicionarZonaaaVotacao(zonaFlorianopolis, votacaoFlorianopolis);
 		//System.out.println(votacaoFlorianopolis.getZonasEleitorais().get(0)); ok
@@ -47,7 +51,12 @@ public class GeralControlador {
 //		System.out.println(votacaoFlorianopolis.getMapaVotosGovernador()); ok
 		segundoTurnoControlador.gerarMapaVotosGovernador(votacaoFlorianopolis);
 //		System.out.println(segundoTurnoControlador.definirGovernadorVencedor(votacaoFlorianopolis).getNome()); ok
+		int nulos = segundoTurnoControlador.contarVotosNulosGovernador(votacaoFlorianopolis);
+		int brancos = segundoTurnoControlador.contarVotosBrancosGovernador(votacaoFlorianopolis);
 		
-	}
+		//TESTANDO VOTACAO PRIMEIRO TURNO
+		VotacaoEntidade votacaoSaoJose = new VotacaoEntidade();
 
+
+	}
 }

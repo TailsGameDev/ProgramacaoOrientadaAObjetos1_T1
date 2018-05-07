@@ -7,6 +7,8 @@ public class UrnaEntidade {
 	private ArrayList<CandidatoEntidade> candidatosGovernador = new ArrayList<CandidatoEntidade>();
 	private ArrayList<CandidatoEntidade> candidatosDeputado = new ArrayList<CandidatoEntidade>();
 	private ArrayList<VotoEntidade> ListaDeVotos = new ArrayList<VotoEntidade>();
+	private SessaoEntidade sessao;
+	private ZonaEleitoralEntidade zonaEleitoral;
 	
 	public UrnaEntidade(int q, String t , ArrayList<CandidatoEntidade> vcandidatosGovernador,ArrayList<CandidatoEntidade> vcandidatosDeputado) {
 		qtddMaximaEleitores = q; turno = t;
@@ -41,7 +43,23 @@ public class UrnaEntidade {
 	public ArrayList<VotoEntidade> getListaDeVotos() {
 		return ListaDeVotos;
 	}
-	
+
+	public SessaoEntidade getSessao() {
+		return sessao;
+	}
+
+	public void setSessao(SessaoEntidade sessao) {
+		this.sessao = sessao;
+	}
+
+	public ZonaEleitoralEntidade getZonaEleitoral() {
+		return zonaEleitoral;
+	}
+
+	public void setZonaEleitoral(ZonaEleitoralEntidade zonaEleitoral) {
+		this.zonaEleitoral = zonaEleitoral;
+	}
+
 	//a quantidade limite de votos de acordo com a qtddDeEleitores estah implementada bem aqui
 	public void setListaDeVotos(ArrayList<VotoEntidade> listaDeVotos) {
 		try {
