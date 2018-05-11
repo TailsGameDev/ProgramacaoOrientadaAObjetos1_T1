@@ -1,8 +1,21 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class GeralControlador {
 
 	public static void main(String[] args) {
+		
+		Scanner scanner = new Scanner(System.in);
+		PrimeiroTurnoControlador primeiroTurnoControl = new PrimeiroTurnoControlador();
+		
+		System.out.println("Bem vindx aa simulacao de urna. Aperte Enter para cadastrar uma votacao");
+		
+		int turno=0;
+		while (turno != 1 || turno !=2) {
+			System.out.println("digite 1 para primeiro turno, 2 para segundo");
+			turno = scanner.nextInt();
+		}
+		
 		
 		CandidatoControlador candidatoControlador = new CandidatoControlador();
 		ZonaEleitoralControlador zonaEleitoralControlador = new ZonaEleitoralControlador();
@@ -57,6 +70,7 @@ public class GeralControlador {
 		//TESTANDO VOTACAO PRIMEIRO TURNO
 		VotacaoEntidade votacaoSaoJose = new VotacaoEntidade();
 
-
+		//System.out.println("im here");
+		
 	}
 }
