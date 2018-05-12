@@ -42,9 +42,9 @@ public class GeralControlador {
 		//cadastrando urna, secao e zona
 		UrnaEntidade urnaNaUFSC = new UrnaEntidade(5, "primeiro", candidatosGovernador, candidatosDeputado); // a urna se constroi com qtdd de eleitores, turno, e candidatos
 		SessaoEntidade sessaoFloripaUFSC = new SessaoEntidade("sessao UFSC", urnaNaUFSC); //a secao guarda um nome e uma urna
-		ZonaEleitoralEntidade zonaFlorianopolis = new ZonaEleitoralEntidade("Zona Florianopolis");
-		zonaEleitoralControlador.adicionarSessaoaaZona(sessaoFloripaUFSC, zonaFlorianopolis);
-		urnaNaUFSC.setZonaEleitoral(zonaFlorianopolis);
+		ZonaEleitoralEntidade zonaFlorianopolis = new ZonaEleitoralEntidade("Zona Florianopolis"); //zona soh tem o nome
+		zonaEleitoralControlador.adicionarSessaoaaZona(sessaoFloripaUFSC, zonaFlorianopolis); //dai tem que adicionar sessoes aa ela
+		urnaNaUFSC.setZonaEleitoral(zonaFlorianopolis); //a urna guarda sessao e zona, mas nao as usa
 		urnaNaUFSC.setSessao(sessaoFloripaUFSC);
 		
 		UrnaEntidade urnaSessaoSJ = new UrnaEntidade(5, "primeiro", candidatosGovernador, candidatosDeputado);
@@ -52,9 +52,10 @@ public class GeralControlador {
 		ZonaEleitoralEntidade zonaSaoJose = new ZonaEleitoralEntidade("Zona Sao Jose");
 		zonaEleitoralControlador.adicionarSessaoaaZona(sessaoZonaSJ, zonaSaoJose);
 		urnaSessaoSJ.setZonaEleitoral(zonaSaoJose);
+		urnaNaUFSC.setSessao(sessaoZonaSJ);
 		
-		//VotoEntidade voto = votoControlador.instanciarVoto(2,3,urnaNaUFSC); ok
-		//System.out.println(voto.getCandidatoGovernador().getNome() + voto.getCandidatoDeputado().getNome()); ok
+		//VotoEntidade voto = votoControlador.instanciarVoto(2,3,urnaNaUFSC); exemplo de instanciacao de voto
+		//System.out.println(voto.getCandidatoGovernador().getNome() + voto.getCandidatoDeputado().getNome()); exemplo de acessar informacao do voto
 		
 		
 		//TESTANDO VOTACAO SEGUNDO TURNO
