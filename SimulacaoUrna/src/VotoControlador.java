@@ -47,7 +47,6 @@ public class VotoControlador {
 		av.add(voto);
 		urna.setListaDeVotos(av);
 		
-		//return voto;
 	}
 	
 }

@@ -5,6 +5,7 @@ public class GeralControlador {
 
 	public static void main(String[] args) {
 		
+		/*
 		Scanner scanner = new Scanner(System.in);
 		PrimeiroTurnoControlador primeiroTurnoControl = new PrimeiroTurnoControlador();
 		
@@ -16,27 +17,35 @@ public class GeralControlador {
 			turno = scanner.nextInt();
 		}
 		
+		*/
 		
+		
+		//instanciando controladores
 		CandidatoControlador candidatoControlador = new CandidatoControlador();
 		ZonaEleitoralControlador zonaEleitoralControlador = new ZonaEleitoralControlador();
 		VotoControlador votoControlador = new VotoControlador();
 		SegundoTurnoControlador segundoTurnoControlador = new SegundoTurnoControlador();
 		
 		
+		//criando arrays de candidatos
 		ArrayList<CandidatoEntidade> candidatosGovernador = new ArrayList<CandidatoEntidade>();
 		ArrayList<CandidatoEntidade> candidatosDeputado = new ArrayList<CandidatoEntidade>();
 		
+		
+		//povoando arrays de candidatos
 		for (int i = 1; i<6; i++) {
 			PartidoEnum partido = i <3 ? PartidoEnum.PT : PartidoEnum.PSDB; 
 			candidatosGovernador.add( candidatoControlador.InstanciarCandidatoGovernador("candGov" + i, partido, i)  );
 			candidatosDeputado.add  ( candidatoControlador.InstanciarCandidatoDeputado  ("candDep" + i, partido, i)  );
 		}
 		
-		UrnaEntidade urnaNaUFSC = new UrnaEntidade(5, "primeiro", candidatosGovernador, candidatosDeputado);
-		SessaoEntidade sessaoFloripaUFSC = new SessaoEntidade("sessao UFSC", urnaNaUFSC);
+		//cadastrando urna, secao e zona
+		UrnaEntidade urnaNaUFSC = new UrnaEntidade(5, "primeiro", candidatosGovernador, candidatosDeputado); // a urna se constroi com qtdd de eleitores, turno, e candidatos
+		SessaoEntidade sessaoFloripaUFSC = new SessaoEntidade("sessao UFSC", urnaNaUFSC); //a secao guarda um nome e uma urna
 		ZonaEleitoralEntidade zonaFlorianopolis = new ZonaEleitoralEntidade("Zona Florianopolis");
 		zonaEleitoralControlador.adicionarSessaoaaZona(sessaoFloripaUFSC, zonaFlorianopolis);
 		urnaNaUFSC.setZonaEleitoral(zonaFlorianopolis);
+		urnaNaUFSC.setSessao(sessaoFloripaUFSC);
 		
 		UrnaEntidade urnaSessaoSJ = new UrnaEntidade(5, "primeiro", candidatosGovernador, candidatosDeputado);
 		SessaoEntidade sessaoZonaSJ = new SessaoEntidade("sessao em Sao Jose", urnaSessaoSJ);
