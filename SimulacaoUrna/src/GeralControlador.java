@@ -25,7 +25,7 @@ public class GeralControlador {
 		ZonaEleitoralControlador zonaEleitoralControlador = new ZonaEleitoralControlador();
 		VotoControlador votoControlador = new VotoControlador();
 		SegundoTurnoControlador segundoTurnoControlador = new SegundoTurnoControlador();
-		
+		PrimeiroTurnoControlador primeiroTurnoControlador = new PrimeiroTurnoControlador();
 		
 		//criando arrays de candidatos
 		ArrayList<CandidatoEntidade> candidatosGovernador = new ArrayList<CandidatoEntidade>();
@@ -47,7 +47,7 @@ public class GeralControlador {
 		urnaNaUFSC.setZonaEleitoral(zonaFlorianopolis); //a urna guarda sessao e zona, mas nao as usa
 		urnaNaUFSC.setSessao(sessaoFloripaUFSC);
 		
-		UrnaEntidade urnaSessaoSJ = new UrnaEntidade(5, "primeiro", candidatosGovernador, candidatosDeputado);
+		UrnaEntidade urnaSessaoSJ = new UrnaEntidade(15, "primeiro", candidatosGovernador, candidatosDeputado);
 		SessaoEntidade sessaoZonaSJ = new SessaoEntidade("sessao em Sao Jose", urnaSessaoSJ);
 		ZonaEleitoralEntidade zonaSaoJose = new ZonaEleitoralEntidade("Zona Sao Jose");
 		zonaEleitoralControlador.adicionarSessaoaaZona(sessaoZonaSJ, zonaSaoJose);
@@ -79,7 +79,18 @@ public class GeralControlador {
 		
 		//TESTANDO VOTACAO PRIMEIRO TURNO
 		VotacaoEntidade votacaoSaoJose = new VotacaoEntidade();
-
+		primeiroTurnoControlador.adicionarZonaaaVotacao(zonaSaoJose, votacaoSaoJose);
+		votoControlador.instanciarVoto(1, 1, urnaSessaoSJ);
+		votoControlador.instanciarVoto(2, 2, urnaSessaoSJ);
+		votoControlador.instanciarVoto(2, 2, urnaSessaoSJ);
+		votoControlador.instanciarVoto(3, 3, urnaSessaoSJ);
+		votoControlador.instanciarVoto(3, 3, urnaSessaoSJ);
+		votoControlador.instanciarVoto(3, 3, urnaSessaoSJ);
+		votoControlador.instanciarVoto(0, 0, urnaSessaoSJ);
+		votoControlador.instanciarVoto(42, 42, urnaSessaoSJ);
+		
+		primeiroTurnoControlador.listarVotosDeTodasAsUrnas(votacaoSaoJose);
+		primeiroTurnoControlador.geraMapaVotosDeputado(votacaoFlorianopolis);
 		//System.out.println("im here");
 		
 	}

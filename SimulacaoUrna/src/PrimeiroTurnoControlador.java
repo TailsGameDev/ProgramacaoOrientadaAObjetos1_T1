@@ -91,9 +91,54 @@ public class PrimeiroTurnoControlador extends SegundoTurnoControlador {
 	
 	public void listaDeputadosEleitos(VotacaoEntidade ve) {
 		
+
+		
+		//PrimeiroTurnoControlador p = new PrimeiroTurnoControlador();
+		int quantidadeDeDeputadosAEleger = this.calculaQuocienteEleitoral(ve);
+		
+		//esse for executa uma vez para cada deputado a eleger
+		for (int i = quantidadeDeDeputadosAEleger; i>0; i--) {
+			int maximoDeVotosAtehAgr=0;
+			CandidatoEntidade vencedor = new CandidatoEntidade("lasdfas982h3n4uf9dsajfpja98r3npdfe9jd832dnum9");
+			for(CandidatoEntidade cand : ve.getMapaVotosDeputado().keySet()) { //ele percorre o mapa de candidatos
+				if(ve.getMapaVotosDeputado().get(cand) > maximoDeVotosAtehAgr) { //se ele tem a maior quantidade de votos da rodada
+					if(!deputadosEleitos.contains(cand)) //e ele ainda nao foi eleito
+						vencedor = cand; //guarda ele porque
+				}
+			}
+			deputadosEleitos.add(vencedor); //ele serah adicionado aos eleitos caso ninguem supere ele.
+		}
+		
+	}
+	
+	public int calculaQtddVotosBrancosDeputado(VotacaoEntidade ve) {
+		ArrayList<VotoEntidade> av = ve.getVotosDeTodasAsUrnas();
+		int brancos = 0;
+		for (VotoEntidade voto : av) {
+			if(voto.getNumeroDeputado()==99)
+				brancos++;
+		}
+		return brancos;
+	}
+	
+	public int calculaQtddVotosNulosDeputado(VotacaoEntidade ve) {
+		ArrayList<VotoEntidade> av = ve.getVotosDeTodasAsUrnas();
+		int nulos = 0;
+		for (VotoEntidade voto : av) {
+			if(voto.getNumeroDeputado()==0)
+				nulos++;
+		}
+		return nulos;
+	}
+
+}
+	
+	
+		
+		/* tentativa anterior condizente com a politica verdadeira
+		  
 		//cria array com todos os votos
 		ArrayList<VotoEntidade> av = ve.getVotosDeTodasAsUrnas(); //av eh sigla para array de votos
-		
 		//mapa de votos com chave partido
 		HashMap<PartidoEnum, Integer> votosPorPartido = new HashMap<PartidoEnum, Integer>();
 		
@@ -144,8 +189,8 @@ public class PrimeiroTurnoControlador extends SegundoTurnoControlador {
 		}
 		
 		
-		
-	}
+		*/
+	
 	
 /*	public double quoeficientePartidario(VotacaoEntidade ve) {
 		//cria array com todos os votos
@@ -162,4 +207,4 @@ public class PrimeiroTurnoControlador extends SegundoTurnoControlador {
 		return 123.45;
 	}
 	*/
-}
+
