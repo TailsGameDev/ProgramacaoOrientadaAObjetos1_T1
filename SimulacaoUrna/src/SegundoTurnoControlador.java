@@ -47,6 +47,7 @@ public class SegundoTurnoControlador {
 		CandidatoEntidade vencedor = new CandidatoEntidade("lasdfas982h3n4uf9dsajfpja98r3npdfe9jd832dnum9");
 		for(CandidatoEntidade cand : ve.getMapaVotosGovernador().keySet()) {
 			if(ve.getMapaVotosGovernador().get(cand) > maximoDeVotosAtehAgr) {
+				maximoDeVotosAtehAgr = ve.getMapaVotosGovernador().get(cand);
 				vencedor = cand;
 			}
 		}

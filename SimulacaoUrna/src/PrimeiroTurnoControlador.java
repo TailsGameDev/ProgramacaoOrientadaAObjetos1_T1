@@ -63,8 +63,8 @@ public class PrimeiroTurnoControlador extends SegundoTurnoControlador {
 				//percorre os votos
 				for(VotoEntidade voto : av) {
 					if(mapaVotosDeputado.containsKey( voto.getCandidatoDeputado() )) {
-						int qtddVotosAtuais = mapaVotosDeputado.get(voto.getCandidatoGovernador());
-						mapaVotosDeputado.put(voto.getCandidatoGovernador(), qtddVotosAtuais + 1);
+						int qtddVotosAtuais = mapaVotosDeputado.get(voto.getCandidatoDeputado());
+						mapaVotosDeputado.put(voto.getCandidatoDeputado(), qtddVotosAtuais + 1);
 					} else {
 						mapaVotosDeputado.put(voto.getCandidatoDeputado(), 1);
 					}
@@ -73,7 +73,7 @@ public class PrimeiroTurnoControlador extends SegundoTurnoControlador {
 				ve.setMapaVotosDeputado(mapaVotosDeputado);
 	}
 	
-	public void listarGovernadoresParaSegundoTurno(VotacaoEntidade ve) {
+	public void listaGovernadoresParaSegundoTurno(VotacaoEntidade ve) {
 		CandidatoEntidade primeiroLugar = definirGovernadorVencedor(ve);
 		
 		//para definir o segundo lugar, copiei a funcao definirGovernadorVencedor() aqui, e adicionei no if a expressao "&& cand != primeiroLugar"
@@ -91,8 +91,6 @@ public class PrimeiroTurnoControlador extends SegundoTurnoControlador {
 	
 	public void listaDeputadosEleitos(VotacaoEntidade ve) {
 		
-
-		
 		//PrimeiroTurnoControlador p = new PrimeiroTurnoControlador();
 		int quantidadeDeDeputadosAEleger = this.calculaQuocienteEleitoral(ve);
 		
@@ -101,9 +99,13 @@ public class PrimeiroTurnoControlador extends SegundoTurnoControlador {
 			int maximoDeVotosAtehAgr=0;
 			CandidatoEntidade vencedor = new CandidatoEntidade("lasdfas982h3n4uf9dsajfpja98r3npdfe9jd832dnum9");
 			for(CandidatoEntidade cand : ve.getMapaVotosDeputado().keySet()) { //ele percorre o mapa de candidatos
-				if(ve.getMapaVotosDeputado().get(cand) > maximoDeVotosAtehAgr) { //se ele tem a maior quantidade de votos da rodada
-					if(!deputadosEleitos.contains(cand)) //e ele ainda nao foi eleito
-						vencedor = cand; //guarda ele porque
+				if(cand!=null) {
+					if(ve.getMapaVotosDeputado().get(cand) > maximoDeVotosAtehAgr) { //se ele tem a maior quantidade de votos da rodada
+						if(!deputadosEleitos.contains(cand)) { //e ele ainda nao foi eleito
+							maximoDeVotosAtehAgr=ve.getMapaVotosDeputado().get(cand);
+							vencedor = cand; //guarda ele porque
+						}
+					}
 				}
 			}
 			deputadosEleitos.add(vencedor); //ele serah adicionado aos eleitos caso ninguem supere ele.

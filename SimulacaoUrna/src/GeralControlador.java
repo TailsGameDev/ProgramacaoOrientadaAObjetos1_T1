@@ -90,8 +90,16 @@ public class GeralControlador {
 		votoControlador.instanciarVoto(42, 42, urnaSessaoSJ);
 		
 		primeiroTurnoControlador.listarVotosDeTodasAsUrnas(votacaoSaoJose);
-		primeiroTurnoControlador.geraMapaVotosDeputado(votacaoFlorianopolis);
-		//System.out.println("im here");
+		primeiroTurnoControlador.geraMapaVotosDeputado(votacaoSaoJose);
+		primeiroTurnoControlador.listaDeputadosEleitos(votacaoSaoJose);
+		
+		ResultadosLimite resultadosLimite = new ResultadosLimite();
+		//resultadosLimite.exibeTelaVotosDeputado(votacaoSaoJose); funciona!
+		
+		/*
+		for(CandidatoEntidade depEleito : primeiroTurnoControlador.deputadosEleitos) {
+			System.out.println("Eleito: " + depEleito.getNome());
+		}*/ //funciona!
 		
 	}
 }
