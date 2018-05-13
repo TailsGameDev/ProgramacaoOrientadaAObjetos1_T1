@@ -22,6 +22,7 @@ public class GeralControlador2 {
 	}
 	
 	public static void main (String args[]) {
-		//ResultadosLimite resultadosLimite
+		CadastrosLimite cadastrosLimite = new CadastrosLimite();
+		cadastrosLimite.boasVindas();
 	}
 }
