@@ -72,7 +72,7 @@ public class GeralControlador {
 		segundoTurnoControlador.listarVotosDeTodasAsUrnas(votacaoFlorianopolis);
 //		System.out.println(urnaNaUFSC.getListaDeVotos().get(4).getNumeroGovernador()); ok
 //		System.out.println(votacaoFlorianopolis.getMapaVotosGovernador()); ok
-		segundoTurnoControlador.gerarMapaVotosGovernador(votacaoFlorianopolis);
+		segundoTurnoControlador.geraMapaVotosGovernador(votacaoFlorianopolis);
 //		System.out.println(segundoTurnoControlador.definirGovernadorVencedor(votacaoFlorianopolis).getNome()); ok
 		int nulos = segundoTurnoControlador.contarVotosNulosGovernador(votacaoFlorianopolis);
 		int brancos = segundoTurnoControlador.contarVotosBrancosGovernador(votacaoFlorianopolis);

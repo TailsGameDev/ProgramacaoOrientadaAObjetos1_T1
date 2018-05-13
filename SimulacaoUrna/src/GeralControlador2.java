@@ -43,16 +43,16 @@ public class GeralControlador2 {
 		//iniciando cadastros
 		cadastrosLimite.boasVindas();
 		cadastrosLimite.povoaVotacoes(geralControlador);
-		System.out.println(geralControlador.getVotacoes().get(0));
+		//System.out.println(geralControlador.getVotacoes().get(0));
 		cadastrosLimite.povoaZonas(geralControlador);
-		System.out.println(geralControlador.getVotacoes().get(0).getZonasEleitorais().get(0));
+		//System.out.println(geralControlador.getVotacoes().get(0).getZonasEleitorais().get(0));
 		ArrayList<CandidatoEntidade> candGov = cadastrosLimite.povoaArrayCandidatosGovernador();
-		System.out.println(candGov.get(0));
+		//System.out.println(candGov.get(0));
 		ArrayList<CandidatoEntidade> candDep = cadastrosLimite.povoaArrayCandidatosDeputado();
-		System.out.println(candDep.get(0).getNome());
+		//System.out.println(candDep.get(0).getNome());
 		cadastrosLimite.povoaSessoes(geralControlador, candGov, candDep);
-		System.out.println(geralControlador.getVotacoes().get(0).getZonasEleitorais().get(0).getSessoes().get(0));
-		System.out.println(geralControlador.getVotacoes().get(0).getZonasEleitorais().get(0).getSessoes().get(0).getUrna().getCandidatosDeputado().get(0).getNome());
+		//System.out.println(geralControlador.getVotacoes().get(0).getZonasEleitorais().get(0).getSessoes().get(0));
+		//System.out.println(geralControlador.getVotacoes().get(0).getZonasEleitorais().get(0).getSessoes().get(0).getUrna().getCandidatosDeputado().get(0).getNome());
 		
 		//momento das alteracoes
 		int flag = cadastrosLimite.exibeOpcoesAlteracao();
@@ -110,24 +110,51 @@ public class GeralControlador2 {
 			}
 		}
 		
-		//iniciando resultados.
-		ResultadosLimite resultadosLimite = new ResultadosLimite();
-		do {
-			flag = resultadosLimite.exibeTelaOpcoesResultado();
-			switch(flag) {
-				case 1:
-					break;
-				case 2:
-					break;
-				case 3:
-					break;
-				case 4:
-					break;
-				case -1:
-					break;
-				default:
-					break;
+		if(geralControlador.getVotacoes().size()>1) {
+			System.out.println("Criando votacao de numero "+geralControlador.getVotacoes().size()+" que eh a juncao das anteriores.");
+			VotacaoEntidade votacaoSuprema = new VotacaoEntidade();
+			for(VotacaoEntidade votacao : geralControlador.getVotacoes()) {
+				ArrayList<ZonaEleitoralEntidade> zonasSuprema = votacaoSuprema.getZonasEleitorais();
+				zonasSuprema.addAll(votacao.getZonasEleitorais());
+				votacaoSuprema.setZonasEleitorais(zonasSuprema);
 			}
-		} while (flag!=-1);
+			geralControlador.votacoes.add(votacaoSuprema);
+		}
+		
+		//iniciando resultados.
+		
+		//apura os votos.
+		for(VotacaoEntidade votacao : geralControlador.getVotacoes()) {
+			primeiroTurnoControlador.listarVotosDeTodasAsUrnas(votacao);
+			primeiroTurnoControlador.geraMapaVotosGovernador(votacao);
+			primeiroTurnoControlador.geraMapaVotosDeputado(votacao);
+			primeiroTurnoControlador.listaDeputadosEleitos(votacao);
+		}
+		
+		//exibe menu para os resultados e chama as funcoes devidas.
+		ResultadosLimite resultadosLimite = new ResultadosLimite();
+		for (int i = 0; i<geralControlador.getVotacoes().size(); i++) {
+			do {
+				flag = resultadosLimite.exibeTelaOpcoesResultado(i);
+				switch(flag) {
+					case 1:
+						resultadosLimite.exibeGovernadorEleito(primeiroTurnoControlador.definirGovernadorVencedor(geralControlador.getVotacoes().get(i)));
+						break;
+					case 2:
+						resultadosLimite.exibeDeputadosEleitos(primeiroTurnoControlador.getDeputadosEleitos());
+						break;
+					case 3:
+						resultadosLimite.exibeTabelaVotosGovernador(geralControlador.getVotacoes().get(i));
+						break;
+					case 4:
+						resultadosLimite.exibeTabelaVotosDeputado(geralControlador.getVotacoes().get(i));
+						break;
+					case -1:
+						break;
+					default:
+						break;
+				}
+			} while (flag!=-1);
+		}
 	}
 }

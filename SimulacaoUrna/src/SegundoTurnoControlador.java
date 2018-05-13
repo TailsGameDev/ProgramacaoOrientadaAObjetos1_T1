@@ -20,7 +20,7 @@ public class SegundoTurnoControlador {
 		}
 	}
 	
-	public void gerarMapaVotosGovernador(VotacaoEntidade ve) { //serao computados todos os votos para a votacao passada como parametro
+	public void geraMapaVotosGovernador(VotacaoEntidade ve) { //serao computados todos os votos para a votacao passada como parametro
 		
 		//cria array com todos os votos
 		ArrayList<VotoEntidade> av = ve.getVotosDeTodasAsUrnas(); //av eh sigla para array de votos
