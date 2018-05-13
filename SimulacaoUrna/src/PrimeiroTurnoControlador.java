@@ -6,6 +6,22 @@ public class PrimeiroTurnoControlador extends SegundoTurnoControlador {
 	ArrayList<CandidatoEntidade> deputadosEleitos = new ArrayList<CandidatoEntidade>();
 	ArrayList<CandidatoEntidade> governadoresParaSegundoTurno = new ArrayList<CandidatoEntidade>();
 	
+	public ArrayList<CandidatoEntidade> getDeputadosEleitos() {
+		return deputadosEleitos;
+	}
+
+	public void setDeputadosEleitos(ArrayList<CandidatoEntidade> deputadosEleitos) {
+		this.deputadosEleitos = deputadosEleitos;
+	}
+
+	public ArrayList<CandidatoEntidade> getGovernadoresParaSegundoTurno() {
+		return governadoresParaSegundoTurno;
+	}
+
+	public void setGovernadoresParaSegundoTurno(ArrayList<CandidatoEntidade> governadoresParaSegundoTurno) {
+		this.governadoresParaSegundoTurno = governadoresParaSegundoTurno;
+	}
+
 	public int calculaQtddVotosValidosDeputado(VotacaoEntidade ve) {
 		
 		ArrayList<VotoEntidade> av = ve.getVotosDeTodasAsUrnas();

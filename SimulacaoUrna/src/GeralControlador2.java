@@ -47,10 +47,10 @@ public class GeralControlador2 {
 		ArrayList<CandidatoEntidade> candGov = cadastrosLimite.povoaArrayCandidatosGovernador();
 		System.out.println(candGov.get(0));
 		ArrayList<CandidatoEntidade> candDep = cadastrosLimite.povoaArrayCandidatosDeputado();
-		System.out.println(candDep.get(0));
+		System.out.println(candDep.get(0).getNome());
 		cadastrosLimite.povoaSessoes(geralControlador, candGov, candDep);
 		System.out.println(geralControlador.getVotacoes().get(0).getZonasEleitorais().get(0).getSessoes().get(0));
-		System.out.println(geralControlador.getVotacoes().get(0).getZonasEleitorais().get(0).getSessoes().get(0).getUrna());
+		System.out.println(geralControlador.getVotacoes().get(0).getZonasEleitorais().get(0).getSessoes().get(0).getUrna().getCandidatosDeputado().get(0).getNome());
 		int flag = cadastrosLimite.exibeOpcoesAlteracao();
 		while (flag!= -1) {
 		switch(flag) {
@@ -69,10 +69,20 @@ public class GeralControlador2 {
 				break;
 		}
 	}
+		/* teste funcionou para um candidato gov e um dep
 		votoControlador.instanciarVoto(1, 1, geralControlador.votacoes.get(0).getZonasEleitorais().get(0).getSessoes().get(0).getUrna());
 		votoControlador.instanciarVoto(1, 1, geralControlador.votacoes.get(0).getZonasEleitorais().get(0).getSessoes().get(0).getUrna());
+		votoControlador.instanciarVoto(1, 1, geralControlador.votacoes.get(0).getZonasEleitorais().get(0).getSessoes().get(0).getUrna());
+	
 		primeiroTurnoControlador.listarVotosDeTodasAsUrnas(geralControlador.votacoes.get(0));
 		primeiroTurnoControlador.gerarMapaVotosGovernador(geralControlador.votacoes.get(0));
+		primeiroTurnoControlador.geraMapaVotosDeputado(geralControlador.votacoes.get(0));
+		
 		System.out.println(primeiroTurnoControlador.definirGovernadorVencedor(geralControlador.votacoes.get(0)).getNome());
+		primeiroTurnoControlador.listaDeputadosEleitos(geralControlador.votacoes.get(0));
+		for(CandidatoEntidade depEleit : primeiroTurnoControlador.getDeputadosEleitos()) {
+			System.out.println(depEleit.getNome());
+		}
+		//*/ 
 	}
 }

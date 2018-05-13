@@ -163,7 +163,7 @@ public class CadastrosLimite {
 		for(int i=0; i<geralControlador.getVotacoes().size() ; i++) {
 			for(int j=0; j<geralControlador.getVotacoes().get(i).getZonasEleitorais().size(); j++) {
 				System.out.println("Para a votacao " + i + ", Zona "+geralControlador.getVotacoes().get(i).getZonasEleitorais().get(j).getZonaEleitoral()
-						+ ", quantas sessoes serao cadastradas?");
+						+ ", quantas secoes serao cadastradas?");
 				int qtddSessoes = scanner.nextInt();
 				for ( int k =0; k<qtddSessoes; k++) {
 					System.out.println("quantos eleitores votarao nessa urna?");

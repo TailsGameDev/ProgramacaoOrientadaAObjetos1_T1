@@ -96,10 +96,10 @@ public class GeralControlador {
 		ResultadosLimite resultadosLimite = new ResultadosLimite();
 		//resultadosLimite.exibeTelaVotosDeputado(votacaoSaoJose); funciona!
 		
-		/*
+		
 		for(CandidatoEntidade depEleito : primeiroTurnoControlador.deputadosEleitos) {
 			System.out.println("Eleito: " + depEleito.getNome());
-		}*/ //funciona!
+		}
 		
 	}
 }
