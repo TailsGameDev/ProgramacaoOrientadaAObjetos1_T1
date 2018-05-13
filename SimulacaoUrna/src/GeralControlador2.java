@@ -34,12 +34,14 @@ public class GeralControlador2 {
 	}
 	
 	public static void main (String args[]) {
+		//instanciando controladores
 		GeralControlador2 geralControlador = new GeralControlador2();
 		CadastrosLimite cadastrosLimite = new CadastrosLimite();
 		VotoControlador votoControlador = new VotoControlador();
 		PrimeiroTurnoControlador primeiroTurnoControlador = new PrimeiroTurnoControlador();
+		
+		//iniciando cadastros
 		cadastrosLimite.boasVindas();
-		//geralControlador.cadastraCoisas();
 		cadastrosLimite.povoaVotacoes(geralControlador);
 		System.out.println(geralControlador.getVotacoes().get(0));
 		cadastrosLimite.povoaZonas(geralControlador);
@@ -51,24 +53,27 @@ public class GeralControlador2 {
 		cadastrosLimite.povoaSessoes(geralControlador, candGov, candDep);
 		System.out.println(geralControlador.getVotacoes().get(0).getZonasEleitorais().get(0).getSessoes().get(0));
 		System.out.println(geralControlador.getVotacoes().get(0).getZonasEleitorais().get(0).getSessoes().get(0).getUrna().getCandidatosDeputado().get(0).getNome());
+		
+		//momento das alteracoes
 		int flag = cadastrosLimite.exibeOpcoesAlteracao();
 		while (flag!= -1) {
-		switch(flag) {
-			case 1:
-					cadastrosLimite.alteraCandidatosGovernador(geralControlador);
-				break;
-			case 2:
-					cadastrosLimite.alteraCandidatosDeputado(geralControlador);
-				break;
-			case 3:
-					cadastrosLimite.alteraSessoes(geralControlador);
-				break;
-			case -1:
-				break;
-			default:
-				break;
+			switch(flag) {
+				case 1:
+						cadastrosLimite.alteraCandidatosGovernador(geralControlador);
+					break;
+				case 2:
+						cadastrosLimite.alteraCandidatosDeputado(geralControlador);
+					break;
+				case 3:
+							cadastrosLimite.alteraSessoes(geralControlador);
+						break;
+					case -1:
+					break;
+				default:
+					break;
+			}
 		}
-	}
+		
 		/* teste funcionou para um candidato gov e um dep
 		votoControlador.instanciarVoto(1, 1, geralControlador.votacoes.get(0).getZonasEleitorais().get(0).getSessoes().get(0).getUrna());
 		votoControlador.instanciarVoto(1, 1, geralControlador.votacoes.get(0).getZonasEleitorais().get(0).getSessoes().get(0).getUrna());
@@ -84,5 +89,45 @@ public class GeralControlador2 {
 			System.out.println(depEleit.getNome());
 		}
 		//*/ 
+		
+		//iniciando simulacao de urna
+		SimulacaoLimite simulacaoLimite = new SimulacaoLimite();
+		simulacaoLimite.boasVidasAaSimulacao();
+		for(int i = 0; i<geralControlador.getVotacoes().size(); i++) {
+			for(int j = 0; j<geralControlador.getVotacoes().get(i).getZonasEleitorais().size(); j++ ) {
+				for(int k=0; k<geralControlador.getVotacoes().get(i).getZonasEleitorais().get(j).getSessoes().size(); k++) {
+					
+		simulacaoLimite.boasVindasAaSessao(i, geralControlador.getVotacoes().get(i).getZonasEleitorais().get(j).getSessoes().get(k));
+					do {
+						flag = simulacaoLimite.exibeMenuUrna();
+						if(flag==1)
+						simulacaoLimite.votar(
+								geralControlador.getVotacoes().get(i).getZonasEleitorais().get(j).getSessoes().get(k).getUrna(), votoControlador);
+					} while(flag!= -1);
+					
+					
+				}
+			}
+		}
+		
+		//iniciando resultados.
+		ResultadosLimite resultadosLimite = new ResultadosLimite();
+		do {
+			flag = resultadosLimite.exibeTelaOpcoesResultado();
+			switch(flag) {
+				case 1:
+					break;
+				case 2:
+					break;
+				case 3:
+					break;
+				case 4:
+					break;
+				case -1:
+					break;
+				default:
+					break;
+			}
+		} while (flag!=-1);
 	}
 }

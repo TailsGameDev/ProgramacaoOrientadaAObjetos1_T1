@@ -1,9 +1,22 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
 
 public class ResultadosLimite {
+	
+	public int exibeTelaOpcoesResultado() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Qual resultado da Votacao selecionada deseja conferir?");
+		System.out.println("1: Exibir governador eleito.");
+		System.out.println("2: Exibir deputados eleitos.");
+		System.out.println("3: Exibir tabela de votos por governador.");
+		System.out.println("4: Exibir tabela de votos por deputado.");
+		System.out.println("-1: Encerrar.");
+		int flag = scanner.nextInt();
+		return flag;
+	}
 
 	public void exibeTabelaVotosDeputado(VotacaoEntidade ve) {//HashMap<CandidatoEntidade,Integer> map){
 		
