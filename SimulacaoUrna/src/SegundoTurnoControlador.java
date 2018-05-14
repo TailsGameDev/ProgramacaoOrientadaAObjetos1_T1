@@ -51,6 +51,15 @@ public class SegundoTurnoControlador {
 				vencedor = cand;
 			}
 		}
+		//checando se ha empate
+		for(CandidatoEntidade cand : ve.getMapaVotosGovernador().keySet()) {//percorra o mapa de candidatos
+			if(cand.getNumero() != vencedor.getNumero()) { // se o cand nao eh o vencedor
+				if(ve.getMapaVotosGovernador().get(cand)==ve.getMapaVotosGovernador().get(vencedor)) { // e eles tem igual qtdd de votos
+					System.out.println("Houve empate entre "+cand.getNome()+" e "+vencedor.getNome()+
+							". Ambos tem "+ve.getMapaVotosGovernador().get(vencedor)+" votos." );
+				}
+			}
+		}
 		return vencedor;
 	}
 	
@@ -60,7 +69,7 @@ public class SegundoTurnoControlador {
 		v.setZonasEleitorais(zonasEleitorais);
 	}
 	
-	public int contarVotosBrancosGovernador(VotacaoEntidade ve) {
+	public int contaVotosBrancosGovernador(VotacaoEntidade ve) {
 		
 		ArrayList<VotoEntidade> av = ve.getVotosDeTodasAsUrnas();
 		int brancos = 0;
@@ -71,7 +80,7 @@ public class SegundoTurnoControlador {
 		return brancos;
 	}
 	
-	public int contarVotosNulosGovernador(VotacaoEntidade ve) {
+	public int contaVotosNulosGovernador(VotacaoEntidade ve) {
 		
 		ArrayList<VotoEntidade> av = ve.getVotosDeTodasAsUrnas();
 		int brancos = 0;

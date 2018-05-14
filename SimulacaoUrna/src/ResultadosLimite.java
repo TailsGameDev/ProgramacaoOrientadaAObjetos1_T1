@@ -29,7 +29,7 @@ public class ResultadosLimite {
 	}
 	
 	
-	public void exibeTabelaVotosGovernador(VotacaoEntidade ve) {//HashMap<CandidatoEntidade,Integer> map){
+	public void exibeTabelaVotosGovernador(VotacaoEntidade ve, PrimeiroTurnoControlador primeiroTurnoControlador) {//HashMap<CandidatoEntidade,Integer> map){
 		
 		System.out.println("Candidatos Votos");
 		ArrayList<CandidatoEntidade> jahImpressos = new ArrayList<>();
@@ -41,6 +41,10 @@ public class ResultadosLimite {
 				}
 			}
 		}
+		System.out.println("Nulos: " + primeiroTurnoControlador.contaVotosNulosGovernador(ve));
+		System.out.println("Brancos: " + primeiroTurnoControlador.contaVotosBrancosGovernador(ve));
+		System.out.println("Total de votos: " + ve.getVotosDeTodasAsUrnas().size());
+		System.out.println("candidatos nao citados nao receberam votos.");
 		
 		/*Set<CandidatoEntidade> keys = map.keySet(); //tem um exemplo que a professora exibiu um mapa assim
 		
@@ -54,7 +58,7 @@ public class ResultadosLimite {
 	}
 	
 	
-	public void exibeTabelaVotosDeputado(VotacaoEntidade ve) {//HashMap<CandidatoEntidade,Integer> map){
+	public void exibeTabelaVotosDeputado(VotacaoEntidade ve, PrimeiroTurnoControlador primeiroTurnoControlador) {//HashMap<CandidatoEntidade,Integer> map){
 		
 		System.out.println("Candidatos Votos");
 		ArrayList<CandidatoEntidade> jahImpressos = new ArrayList<>();
@@ -66,6 +70,10 @@ public class ResultadosLimite {
 				}
 			}
 		}
+		System.out.println("Nulos: " + primeiroTurnoControlador.contaVotosNulosDeputado(ve));
+		System.out.println("Brancos: " + primeiroTurnoControlador.contaVotosBrancosDeputado(ve));
+		System.out.println("Total de votos: " + ve.getVotosDeTodasAsUrnas().size());
+		System.out.println("candidatos nao citados nao receberam votos.");
 		
 		/*Set<CandidatoEntidade> keys = map.keySet(); //tem um exemplo que a professora exibiu um mapa assim
 		

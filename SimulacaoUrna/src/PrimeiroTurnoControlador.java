@@ -125,11 +125,21 @@ public class PrimeiroTurnoControlador extends SegundoTurnoControlador {
 				}
 			}
 			deputadosEleitos.add(vencedor); //ele serah adicionado aos eleitos caso ninguem supere ele.
+			
+			//verificando empate
+			for(CandidatoEntidade cand : ve.getMapaVotosDeputado().keySet()) { //percorrer de novo o mapa de candidatos
+				if(cand!=null && !deputadosEleitos.contains(cand)) { //se esse candidato nao pertence aos eleitos e
+					if(ve.getMapaVotosDeputado().get(cand) == ve.getMapaVotosDeputado().get(vencedor)) { //ele tem tantos votos quando o ultimo eleito
+						System.out.println("Houve empate entre " + cand.getNome() + " e " + vencedor.getNome());
+						System.out.println("Ambos tem " + ve.getMapaVotosDeputado().get(cand) +" votos.");
+					}
+				}
+			}
 		}
 		
 	}
 	
-	public int calculaQtddVotosBrancosDeputado(VotacaoEntidade ve) {
+	public int contaVotosBrancosDeputado(VotacaoEntidade ve) {
 		ArrayList<VotoEntidade> av = ve.getVotosDeTodasAsUrnas();
 		int brancos = 0;
 		for (VotoEntidade voto : av) {
@@ -139,7 +149,7 @@ public class PrimeiroTurnoControlador extends SegundoTurnoControlador {
 		return brancos;
 	}
 	
-	public int calculaQtddVotosNulosDeputado(VotacaoEntidade ve) {
+	public int contaVotosNulosDeputado(VotacaoEntidade ve) {
 		ArrayList<VotoEntidade> av = ve.getVotosDeTodasAsUrnas();
 		int nulos = 0;
 		for (VotoEntidade voto : av) {

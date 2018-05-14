@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
-public class SimulacaoLimite {
-	public void boasVidasAaSimulacao() {
+public class SimulacaoLimite implements simulacao{
+	public void boasVindasAaSimulacao() {
 		System.out.println("Iniciando simulacao das votacoes");
 	}
 	

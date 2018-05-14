@@ -74,8 +74,8 @@ public class GeralControlador {
 //		System.out.println(votacaoFlorianopolis.getMapaVotosGovernador()); ok
 		segundoTurnoControlador.geraMapaVotosGovernador(votacaoFlorianopolis);
 //		System.out.println(segundoTurnoControlador.definirGovernadorVencedor(votacaoFlorianopolis).getNome()); ok
-		int nulos = segundoTurnoControlador.contarVotosNulosGovernador(votacaoFlorianopolis);
-		int brancos = segundoTurnoControlador.contarVotosBrancosGovernador(votacaoFlorianopolis);
+		int nulos = segundoTurnoControlador.contaVotosNulosGovernador(votacaoFlorianopolis);
+		int brancos = segundoTurnoControlador.contaVotosBrancosGovernador(votacaoFlorianopolis);
 		
 		//TESTANDO VOTACAO PRIMEIRO TURNO
 		VotacaoEntidade votacaoSaoJose = new VotacaoEntidade();

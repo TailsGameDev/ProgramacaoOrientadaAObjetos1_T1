@@ -92,7 +92,7 @@ public class GeralControlador2 {
 		
 		//iniciando simulacao de urna
 		SimulacaoLimite simulacaoLimite = new SimulacaoLimite();
-		simulacaoLimite.boasVidasAaSimulacao();
+		simulacaoLimite.boasVindasAaSimulacao();
 		for(int i = 0; i<geralControlador.getVotacoes().size(); i++) {
 			for(int j = 0; j<geralControlador.getVotacoes().get(i).getZonasEleitorais().size(); j++ ) {
 				for(int k=0; k<geralControlador.getVotacoes().get(i).getZonasEleitorais().get(j).getSessoes().size(); k++) {
@@ -128,7 +128,6 @@ public class GeralControlador2 {
 			primeiroTurnoControlador.listarVotosDeTodasAsUrnas(votacao);
 			primeiroTurnoControlador.geraMapaVotosGovernador(votacao);
 			primeiroTurnoControlador.geraMapaVotosDeputado(votacao);
-			primeiroTurnoControlador.listaDeputadosEleitos(votacao);
 		}
 		
 		//exibe menu para os resultados e chama as funcoes devidas.
@@ -141,13 +140,14 @@ public class GeralControlador2 {
 						resultadosLimite.exibeGovernadorEleito(primeiroTurnoControlador.definirGovernadorVencedor(geralControlador.getVotacoes().get(i)));
 						break;
 					case 2:
+						primeiroTurnoControlador.listaDeputadosEleitos(geralControlador.getVotacoes().get(i)); //colocado aqui porque em caso de empate ele imprime na tela
 						resultadosLimite.exibeDeputadosEleitos(primeiroTurnoControlador.getDeputadosEleitos());
 						break;
 					case 3:
-						resultadosLimite.exibeTabelaVotosGovernador(geralControlador.getVotacoes().get(i));
+						resultadosLimite.exibeTabelaVotosGovernador(geralControlador.getVotacoes().get(i), primeiroTurnoControlador);
 						break;
 					case 4:
-						resultadosLimite.exibeTabelaVotosDeputado(geralControlador.getVotacoes().get(i));
+						resultadosLimite.exibeTabelaVotosDeputado(geralControlador.getVotacoes().get(i), primeiroTurnoControlador);
 						break;
 					case -1:
 						break;
