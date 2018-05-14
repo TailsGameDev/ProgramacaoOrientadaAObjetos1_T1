@@ -67,7 +67,7 @@ public class UrnaEntidade {
 					throw new IllegalArgumentException("Quantidade de votos maior do que a de eleitores para essa urna.");
 				}
 			} catch (IllegalArgumentException e) {
-				System.out.println(e.getMessage());
+				System.out.println(e.getMessage() + "O ultimo voto nao serah contabilizado.");
 				return;
 			}
 		ListaDeVotos = listaDeVotos;

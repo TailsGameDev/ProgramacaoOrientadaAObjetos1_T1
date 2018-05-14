@@ -12,11 +12,11 @@ public class VotoControlador {
 		//seta os parametros faceis
 		voto.setNumeroGovernador(numGov); voto.setNumeroDeputado(numDep);
 		//obs: se o numero for zero, jah estah tudo ok, porque dai foi atribuido zero nessa ultima linha
-//System.out.println(voto.getNumeroGovernador() + " "+ voto.getNumeroDeputado());		
+	
 		//captura os arrayLists de candidatos governador e deputado
 		ArrayList<CandidatoEntidade> candidatosGovernador = urna.getCandidatosGovernador();
 		ArrayList<CandidatoEntidade> candidatosDeputado = urna.getCandidatosDeputado();
-//System.out.println(candidatosDeputado.get(1).getNome());
+
 		
 		//percorre os candidatos a governador, atribuindo o candidato de acordo com o numero ou 99 se nao encontrar algum correspondente
 		if(numGov != 0) { //se numGov for 0, nada deve ser feito
