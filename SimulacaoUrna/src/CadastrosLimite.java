@@ -1,3 +1,4 @@
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -6,7 +7,7 @@ public class CadastrosLimite {
 	CandidatoControlador candidatoControlador = new CandidatoControlador();
 	
 	public void boasVindas() {
-		System.out.println("Bem vindx aa simulacao de urna. Vamos comecar simulando o primeiro turno de uma votacao. Por favor, cadastre os candidatos.");
+		System.out.println("Bem vindx aa simulacao de urna.");
 	}
 	
 	public ArrayList<CandidatoEntidade> povoaArrayCandidatosGovernador() {
@@ -34,10 +35,12 @@ public class CadastrosLimite {
 					}
 					PartidoEnum partido = ap[scanner.nextInt()];
 					
-					System.out.println("Entre com o numero do candidato, de 1 a 98");
-					int numero = scanner.nextInt();
 					
-					CandidatoEntidade cand = this.candidatoControlador.InstanciarCandidatoGovernador(nome, partido, numero);
+					//Scanner s = new Scanner(System.in);
+					System.out.println("Entre com o numero do candidato, de 1 a 98");
+					int intNumero = scanner.nextInt();
+					
+					CandidatoEntidade cand = this.candidatoControlador.InstanciarCandidatoGovernador(nome, partido, intNumero);
 					cand.setCargo(CargoEnum.GOVERNADOR);
 					
 					candidatos.add(cand);
@@ -49,7 +52,7 @@ public class CadastrosLimite {
 					boolean removido = false;
 					for(int i =0; i<candidatos.size(); i++) {
 						CandidatoEntidade candidatinho = candidatos.get(i);
-						if(name == candidatinho.getNome()) {
+						if(name.equals(candidatinho.getNome())) {
 							candidatos.remove(i);
 							removido=true;
 						}
@@ -148,7 +151,7 @@ public class CadastrosLimite {
 			System.out.println("Para a votacao " + i + " quantas zonas eleitorais serao cadastradas?");
 			int qtddZonas = scanner.nextInt();
 			for(int k=0; k<qtddZonas; k++) {
-				System.out.println("Digite o nome da Zona");
+				System.out.println("Digite o nome da Zona "+k);
 				String nome = scanner.next();
 				ZonaEleitoralEntidade zona = new ZonaEleitoralEntidade(nome);
 				ArrayList<ZonaEleitoralEntidade> zonas = geralControlador.getVotacoes().get(i).getZonasEleitorais();

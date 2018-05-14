@@ -21,9 +21,19 @@ public class SimulacaoLimite {
 	public void votar(UrnaEntidade urna, VotoControlador votoControlador) {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Bem vindo(a) eleitor(a). Entre com o numero do candidato a governador");
-		int numGov = scanner.nextInt();
+		
+		String padrao = "0";
+		String nGov = scanner.nextLine();
+		String concatenados = padrao + nGov;
+		int numGov = Integer.parseInt(padrao + nGov);
+
 		System.out.println("Entre com o numero do candidato a deputado.");
-		int numDep = scanner.nextInt();
+		
+		String vpadrao = "0";
+		String nDep = scanner.nextLine();
+		String vconcatenados = vpadrao + nDep;
+		int numDep = Integer.parseInt(vpadrao + nDep);
+
 		votoControlador.instanciarVoto(numGov, numDep, urna);
 	}
 }

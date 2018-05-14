@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 //deve haver apenas uma instancia de CandidatoControlador
 public class CandidatoControlador {
@@ -34,6 +35,18 @@ public class CandidatoControlador {
 			}
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
+			System.out.println("Ou tentativa de cadastrar com 0");
+			System.out.println("Favor digitar numero exclusivo para um candidato, diferente de 0.");
+			Scanner scanner = new Scanner(System.in);
+			int novoNumero = scanner.nextInt();
+			CandidatoEntidade c = InstanciarCandidatoGovernador(nome, partido, novoNumero);
+			return c;
+		} catch (java.lang.ArrayIndexOutOfBoundsException e) {
+			System.out.println("numero invalido. Favor digitar novo numero");
+			Scanner scanner = new Scanner(System.in);
+			int novoNumero = scanner.nextInt();
+			CandidatoEntidade c = InstanciarCandidatoGovernador(nome, partido, novoNumero);
+			return c;
 		}
 		
 		return cand;
@@ -58,6 +71,18 @@ public class CandidatoControlador {
 			}
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
+			System.out.println("Ou tentativa de cadastrar com 0");
+			System.out.println("Favor digitar numero exclusivo para um candidato, diferente de 0.");
+			Scanner scanner = new Scanner(System.in);
+			int novoNumero = scanner.nextInt();
+			CandidatoEntidade c = InstanciarCandidatoGovernador(nome, partido, novoNumero);
+			return c;
+		} catch (java.lang.ArrayIndexOutOfBoundsException e) {
+			System.out.println("numero invalido. Favor digitar novo numero");
+			Scanner scanner = new Scanner(System.in);
+			int novoNumero = scanner.nextInt();
+			CandidatoEntidade c = InstanciarCandidatoGovernador(nome, partido, novoNumero);
+			return c;
 		}
 		return cand;
 	}
